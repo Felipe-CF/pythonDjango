@@ -1,0 +1,21 @@
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass (temporario)
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned (permanente)
+
+----------------------- INICIANDO -----------------------
+1 - mkdir siteProjeto
+2 - python -m venv dsweb
+3 - .\dsweb\Scripts\activate
+4 - pip install django; pip list
+5 - django-admin startproject projeto_nome // dir raiz + manage.py
+6 - cd mysite; python manage.py runserver // "roda o servidor"
+7 - python manage.py startapp app_nome // cria uma app
+
+----------------------- CRIANDO VIEWS.PY -----------------------
+1 - abrir views.py  from django.shortcurts import render    
+	from django.http import HttpResponse
+2 - criar urls.py no app ==> from django.urls import path   from . import views
+        urlpatterns= [
+            path('dama/', views.index, name='index')
+        ]
+3 - urls.py do projeto ==> from django.urls import path, include
+            path('enquetes/', include('enquetes.urls')), [dentro do patterns]
