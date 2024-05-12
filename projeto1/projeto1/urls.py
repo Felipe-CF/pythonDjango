@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404, handler500
+from app1 import views
 
 
 urlpatterns = [ # rotas
     path('admin/', admin.site.urls),
     path('', include('app1.urls')), # req p/ raiz
 ]
+
+handler404 = views.error404 #definindo o html que vai gerir o erro
+handler500 = views.error500 #definindo o html que vai gerir o erro

@@ -10,6 +10,24 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned (permanente
 6 - cd mysite; python manage.py runserver // "roda o servidor"
 7 - python manage.py startapp app_nome // cria uma app
 
+----------------------- CRIANDO ESTILO -----------------------
+1 - criar as pastas css, images e js no app
+2 - criar no settings.py ==> STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles') # usado na hora da produção
+3 - shell ==> manage.py collectstatic
+            cria um dir na raiz do projeto com todos os arquivos estaticos
+3 - servidor padrão não consegue servir arqvs estaticos qnd em modo de produção
+            
+
+----------------------- PUBLICANDO -----------------------
+1 - pip install whitenoise gunicorn   
+	"django não consegue servir arqvs estaticos qnd em modo de produção"
+2 - criar urls.py no app ==> from django.urls import path   from . import views
+        urlpatterns= [
+            path('dama/', views.index, name='index')
+        ]
+3 - urls.py do projeto ==> from django.urls import path, include
+            path('enquetes/', include('enquetes.urls')), [dentro do patterns]
+
 ----------------------- CRIANDO VIEWS.PY -----------------------
 1 - abrir views.py  from django.shortcurts import render    
 	from django.http import HttpResponse
