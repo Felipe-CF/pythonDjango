@@ -1,0 +1,15 @@
+----------------------- FORMULÁRIOS -----------------------
+1 - criar forms.py
+2 - from django import forms 
+3 - .\dsweb\Scripts\activate
+4 - pip install django; pip list
+5 - django-admin startproject projeto_nome // dir raiz + manage.py
+6 - cd mysite; python manage.py runserver // "roda o servidor"
+7 - python manage.py startapp app_nome // cria uma app
+
+----------------------- CRIANDO ESTILO -----------------------
+      
+
+----------------------- PUBLICANDO -----------------------
+
+----------------------- CRIANDO VIEWS.PY -----------------------

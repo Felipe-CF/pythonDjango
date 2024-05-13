@@ -1,0 +1,28 @@
+{% load bootstrap4 %} <!--incluindo o bootstrap --> 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app1 - contato</title>
+    {% bootstrap_css %} <!--incluindo os arquivos .css --> 
+</head>
+
+<body>
+    <div class="container">
+        <h1>contato</h1>
+        {%bootstrap_messages%} <!--msg de confirmação -->
+
+        <form class="form" action="{% url 'contato' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %} <!--aplicar css no form context -->
+            {% buttons %} 
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            {% endbuttons %} 
+        </form>
+    </div>
+
+
+{% bootstrap_javascript jquery='full' %} <!--incluindo os arquivos .js --> 
+</body>
+</html>
