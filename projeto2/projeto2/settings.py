@@ -130,3 +130,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGOUT_REDIRECT_URL = 'index' # ao sair do admin ele direciona para o index da app1
+
+# config de emails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # não tem srver de email, ent deixa pronto para isso
+# simulando um email, printando ele no console
+
+""" config para envio real de emails
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = 'no-reply@seudominio.com.br'
+EMAIL_PORT = 587
+EMAIL_USER_TSL = True (cripto)
+EMAIL_HOST_PASSWORD = 'sua senha'
+"""

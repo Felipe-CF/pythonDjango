@@ -10,10 +10,7 @@ def contato(request):
     
     if request.method == 'POST': # envio de dados
         if form.is_valid(): # valida o form
-            nome = form.cleaned_data['nome'] # cleamed_data['name']
-            email = form.cleaned_data['email']
-            assunto = form.cleaned_data['assunto']
-            mensagem = form.cleaned_data['mensagem']
+            form.send_mail()
 
             messages.success(request, 'E-mail enviado com sucesso')
             form = ContatoForm() # limpando o form
