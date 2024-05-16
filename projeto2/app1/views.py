@@ -1,9 +1,15 @@
 from django.shortcuts import render # type: ignore
 from django.contrib import messages # type: ignore
-from .forms import ContatoForm
+from django.shortcuts import redirect # type: ignore
+
+from .forms import ContatoForm, ProdutoModelForm
+from .models import Produto
 
 def index(request):
-    return render(request, 'index.html')
+    context={
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'index.html', context)
 
 def contato(request):
     form = ContatoForm(request.POST or None) # form pode conter dados(quando o usuario submeter), ou não
@@ -23,6 +29,27 @@ def contato(request):
     }
     return render(request, 'contato.html', context=context)
 
-
 def produto(request):
-    return render(request, 'produto.html')
+    # se for usuário anonimo 
+    if str(request.user) != "AnonymousUser":
+        if str(request.method) == 'POST': # quando o formulario tiver sido submetido
+            
+            form = ProdutoModelForm(request.POST, request.FILES) #upload d imagem
+            if form.is_valid():
+                form.save() # salva
+                messages.success(request, 'Produto salvo com sucesso')
+                form = ProdutoModelForm() # limpo o formulário
+            else:
+                messages.error(request, 'Erro ao salvar produto.')
+
+        else:# quando o formulario não tiver sido submetido
+            form = ProdutoModelForm()
+
+        context={
+            "form": form
+        }
+
+        return render(request, 'produto.html', context)
+    else:
+        return redirect('index')
+

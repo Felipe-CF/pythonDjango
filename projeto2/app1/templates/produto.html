@@ -1,36 +1,28 @@
-{%load static %}
+{% load bootstrap4 %} <!--incluindo o bootstrap --> 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/estilo1.css' %}">
+{% bootstrap_css %} <!--incluindo os arquivos .css --> 
     <title>app1 - produto</title>
 </head>
 <body>
-    <h1>produto</h1>
-    <table>;
-        <thead>
-            <tr style="text-align: center;">
-                <th>Cód</th>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Estoque</th>
-            </tr>
-        </thead>
-        <tbody >
-            <tr style="text-align: center;">
-                <td>{{produto.id}}</td>
-                <td>{{produto.nome}}</td>
-                <td>{{produto.preco}}</td>
-                <td>{{produto.qnt_estoque}}</td>
-            </tr>
-        </tbody>
-        <tfoot style="text-align: center;">
-            <tr>
-                <th><a href="{% url 'index' %}">Voltar</a></th>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="container">
+        <h1>Produto</h1>
+        {%bootstrap_messages%} <!--msg de confirmação -->
+
+        <form action="{% url 'produto' %}" method="post"
+         class="form" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %} <!--aplicar css no form context -->
+        {% buttons %} 
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        {% endbuttons %} 
+        </form>
+    </div>
+
+
+{% bootstrap_javascript jquery='full' %} <!--incluindo os arquivos .js --> 
 </body>
 </html>

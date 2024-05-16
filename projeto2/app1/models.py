@@ -24,7 +24,7 @@ class Produto(Base):
 
 # criando signals
 """
-antes de salvar... execute a fuinção quando Produto enviar o sinal
+antes de salvar... execute a função quando Produto enviar o sinal
 """
 def produto_pre_save(signal, instance, sender, **kwargs):
     instance.slug = slugify(instance.nome)

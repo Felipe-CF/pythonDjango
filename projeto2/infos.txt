@@ -1,15 +1,41 @@
 ----------------------- FORMULÁRIOS -----------------------
 1 - criar forms.py
 2 - from django import forms 
-3 - .\dsweb\Scripts\activate
-4 - pip install django; pip list
-5 - django-admin startproject projeto_nome // dir raiz + manage.py
-6 - cd mysite; python manage.py runserver // "roda o servidor"
-7 - python manage.py startapp app_nome // cria uma app
 
------------------------ CRIANDO ESTILO -----------------------
-      
+----------------------- DIR MEDIA -----------------------
+ao salvar 1 produto pelo admin, ele cria o diretorio produtos, onde ficará
+as imagens do produto
+    img = StdImageField('Imagem', upload_to='produtos', variations={'thumb': (124, 124)})
 
------------------------ PUBLICANDO -----------------------
+settings.py:
+    MEDIA_URL = 'media/' # P/ SALVAR DADOS
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
------------------------ CRIANDO VIEWS.PY -----------------------
+
+----------------------- TRABALHANDO COM FORMULÁRIOS -----------------------
+Form - 
+
+ModelForm - +simples
+
+----------------------- APRESENTAR DADOS DO BD NO TEMPLATE -----------------------
+
+
+
+----------------------- MODAL -----------------------
+
+<div class="modal fade bd-example-modal-lg show" id="modal{{produto.id}}" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="dynamic-content">
+                                <img src="{{produto.img.url}}" class="img-fluid" alt="{{produto.nome}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+----------------------- SESSÃO DO USUÁRIO -----------------------

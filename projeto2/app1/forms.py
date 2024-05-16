@@ -1,6 +1,8 @@
 from django import forms # type: ignore
 from django.core.mail.message import EmailMessage # type: ignore
 
+from .models import Produto
+
 class ContatoForm(forms.Form):
     nome = forms.CharField(max_length=100, label='Nome')
     email = forms.EmailField(max_length=100, label='Email')
@@ -23,3 +25,10 @@ class ContatoForm(forms.Form):
             to=['contato@seudominio.com.br',]
         ) 
         mail.send() 
+
+# formulario pronto! 
+class ProdutoModelForm(forms.ModelForm):
+    
+    class Meta: # passando metadados dessa classe
+        model = Produto
+        fields = ['nome', 'preco', 'estoque', 'img']

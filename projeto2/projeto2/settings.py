@@ -123,6 +123,11 @@ USE_TZ = True
 STATIC_URL = 'static/' # usado durante o desenvolvimento
 STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles') # usado na hora da publicação
 
+MEDIA_URL = 'media/' # P/ SALVAR DADOS
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
