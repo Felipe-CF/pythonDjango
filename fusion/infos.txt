@@ -1,0 +1,50 @@
+
+    ======  FUNCTION  based views    ======  
+from.views import index
+urlpatterns=[
+    path('', index, name='index'),
+]
+
+def index(request):
+    context = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'index.html', context)
+
+
+    ======  CLASS based views    ======  
+classes exec. como funções
+
+urlpatterns=[
+    path('', IndexView.as_view(), name='index')
+]
+
+class IndexView(View):
+    def get(self ,request):
+        return render(request, 'index.html')
+
+                <-- mixins --> 
+    classes que proveem funcionalidade para ser
+    herdada por outras, que não são instanciadas por si só;
+    melhorar modularidade;
+    reutilização em outras classes;
+    devem herdar do object;
+    sempre posicionados A ESQUERDA!
+
+class MeuMixin(object):
+def meu_metodo1(self):
+    ...
+def meu_metodo2(self):
+    ...
+
+
+                <-- caso de uso --> 
+from django.shortcuts import render
+def index(request):
+return render(request, 'index.html')
+                ||
+                ||
+from django.views.generic import TemplateView
+class IndexView(TemplateView):
+    template_nome = 'index.html'
+
