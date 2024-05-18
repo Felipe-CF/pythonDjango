@@ -1,3 +1,69 @@
-from django.db import models
+from django.db import models # type: ignore
+from stdimage.models import StdImageField # type: ignore
+import uuid # gera HX
 
-# Create your models here.
+def get_arquivo_path(_instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}.{ext}'
+    return filename
+
+class Base(models.Model):
+    criadoc = models.DateField('Criação', auto_now_add=True) # add qnd novo obj for criado
+    modificado = models.DateField('Atualização', auto_now=True)
+    ativo = models.BooleanField('Ativo', default=True)
+
+    class Meta:
+        abstract = True
+
+class Servico(Base):
+    ICONE_CHOICES = {
+        ('lni-cog', 'Engrenagem'),
+        ('lni-starts-up', 'Graficos'),
+        ('lni-users', 'Usuarios'),
+        ('lni-layers', 'Design'),
+        ('lni-mobile', 'Mobile'),
+        ('lni-rocket', 'Foguete'),
+    }
+    servico = models.CharField('Serviço', max_length=100)
+    descricao = models.TextField('Descrição', max_length=200)
+    icone = models.CharField('Icone', max_length=50, choices=ICONE_CHOICES)
+
+    class Meta:
+        verbose_name = 'Serviço'
+        verbose_name_plural = 'Serviços'
+
+    def __str__(self):
+        return self.servico
+
+class Cargo(Base):
+    cargo = models.CharField('Cargo', max_length=100)
+    class Meta:
+        verbose_name = 'Cargo'
+        verbose_name_plural = 'Cargos'
+
+    def __str__(self):
+        return self.cargo
+
+class Funcionario(Base):
+    ICONE_CHOICES = {
+        ('lni-cog', 'Engrenagem'),
+        ('lni-starts-up', 'Graficos'),
+        ('lni-users', 'Usuarios'),
+        ('lni-layers', 'Design'),
+        ('lni-mobile', 'Mobile'),
+        ('lni-rocket', 'Foguete'),
+    }
+    nome = models.CharField('Nome', max_length=100)
+    cargo = models.ForeignKey('core.Cargo', verbose_name = 'Cargo', on_delete=models.CASCADE)
+    bio = models.TextField('Bio', max_length=200) 
+    img = StdImageField('Imagem', upload_to=get_arquivo_path, variations={'thumb': {'width': 480, 'height': 480}})
+    facebook = models.CharField('Facebook', max_length=100, default='#')
+    twitter = models.CharField('Twitter', max_length=100, default='#')
+    instagram = models.CharField('Instagram', max_length=100, default='#')
+
+    class Meta:
+        verbose_name = 'Funcionario'
+        verbose_name_plural = 'Funcionarios'
+
+    def __str__(self):
+        return self.nome

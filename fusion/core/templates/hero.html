@@ -9,8 +9,8 @@
                 <h2 class="head-title">App, Business & SaaS<br>Landing Page Template</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat! fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat!</p>
                 <div class="header-button">
-                  <a href="#" class="btn btn-common">Download Now</i></a>
-                  <a href="#" class="btn btn-border video-popup">Learn More</i></a>
+                  <a href="#" class="btn btn-common">Saiba Mais</i></a>
+                  <a href="#" class="btn btn-border video-popup">Entre em contato</i></a>
                 </div>
               </div>
             </div>
@@ -23,5 +23,35 @@
         </div> 
       </div>
       <!-- Hero Area End -->
+
+      <div class="container">
+        {% if messages %} <!-- se tiver mensagem -->
+          {% for m in messages %} <!-- percorre todas elas -->
+            <div class="alert alert-success alert-{{ message.tags }}"> <!-- diz que mensagem é -->
+              <button type="button" class="close" data-dismiss="alert"> &times;</button>
+              <strong>{{ m }}</strong> <!-- mensagem -->
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
 </header>
-<!-- Header Area wrapper End -->
+<!-- 
+  Header Area wrapper End 
+<div class="container">
+  {% if messages %} <!-- se tiver mensagem -->
+  {% for message in messages %} <!-- percorre todas elas -->
+  {% if message.tags == 'error' %}
+    <div class="alert alert-danger"> <!-- classe para mensagem de erro -->
+  {% else %}
+    <div class="alert alert-{{ message.tags }}"> <!-- classe para outras mensagens -->
+  {% endif %}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ message }}</strong> <!-- mensagem -->
+  </div>
+{% endfor %}
+{% endif %}
+</div>
+
+
+-->

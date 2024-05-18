@@ -48,3 +48,17 @@ from django.views.generic import TemplateView
 class IndexView(TemplateView):
     template_nome = 'index.html'
 
+    ======  CONTEXT MANAGER    ====== 
+recuperar o contexto do template 
+    context = super(IndexView, self).get_context_data(**kwargs)
+
+e add dados dentro dele
+    context['servicos'] = Servico.objects.all()
+    context['funcionarios'] = Funcionario.objects.all()
+
+
+    ======  EMBARALHAR MENU/DIVS    ====== 
+context['servicos'] = Servico.objects.order_by('?').all()
+
+
+FAZER O FEATURES!!!
