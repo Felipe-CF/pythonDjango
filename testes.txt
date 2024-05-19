@@ -1,0 +1,33 @@
+
+
+----------------------- INICIANDO -----------------------
+from django.test import TestCase # type: ignore
+
+def add_num(num):
+    return num+1
+
+class SimplesTestCase(TestCase):
+
+    #roda sempre que o teste for chamado
+    def setUp(self):
+        self.numero = 41
+    # testa a  unidade de código
+    def test_add_num(self):
+        valor = add_num(self.numero)
+        self.assertTrue(valor == 42)
+
+----------------------- COMO SER FEITO -----------------------
+1 - criar dir tests e, dentro dele, o arquivo __init__.py
+2 - 
+3 - 
+4 -            
+----------------------- PUBLICANDO -----------------------
+1 - 
+2 - 
+3 - 
+4 - 
+5 - 
+----------------------- CRIANDO VIEWS.PY -----------------------
+1 - 
+2 - 
+3 - 
