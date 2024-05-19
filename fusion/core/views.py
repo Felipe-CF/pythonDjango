@@ -1,8 +1,8 @@
 from typing import Any
-from django.http import HttpResponse
+from django.http import HttpResponse# type: ignore
 from django.views.generic import FormView # type: ignore
-from django.urls import reverse_lazy
-from django.contrib import messages
+from django.urls import reverse_lazy # type: ignore
+from django.contrib import messages# type: ignore
 
 from .models import Servico, Funcionario
 from .forms import ContatoForm

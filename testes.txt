@@ -18,16 +18,24 @@ class SimplesTestCase(TestCase):
 
 ----------------------- COMO SER FEITO -----------------------
 1 - criar dir tests e, dentro dele, o arquivo __init__.py
-2 - 
-3 - 
-4 -            
------------------------ PUBLICANDO -----------------------
-1 - 
-2 - 
-3 - 
+2 - cria um test_nometeste.py referente
+          
+----------------------- LIBS -----------------------
+1 - model_mommy
+
+2 - coverage
+	"diz" o que foi, ou não foi testado 
+
+----------------------- COVERAGE -----------------------
+1 - coverage run manage.py test
+2 - coverage report
+3 - coverage html - antes do teste, apagar dir e criar dnv, após 
+	relatorio em html
+4 - python -m http.server 8000 --bind 127.0.0.1 (dentro do dir html)
+	documentação web
+
+----------------------- MOMMY -----------------------
+1 - (shell) from model_mommy import mommy
+2 - inst_model = momme.make("Model")
+3 - inst_model = mommy.make("Model", _quantity=<int>)
 4 - 
-5 - 
------------------------ CRIANDO VIEWS.PY -----------------------
-1 - 
-2 - 
-3 - 
